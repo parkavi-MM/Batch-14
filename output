@@ -1,0 +1,46 @@
+ Unnamed: 0.1  Unnamed: 0  \
+0             0           0   
+1             1           1   
+2             2           2   
+3             3           3   
+4             4           4   
+
+                                                Text    Sentiment  \
+0   Enjoying a beautiful day at the park!        ...   Positive     
+1   Traffic was terrible this morning.           ...   Negative     
+2   Just finished an amazing workout! 💪          ...   Positive     
+3   Excited about the upcoming weekend getaway!  ...   Positive     
+4   Trying out a new recipe for dinner tonight.  ...   Neutral      
+
+             Timestamp            User     Platform  \
+0  2023-01-15 12:30:00   User123          Twitter     
+1  2023-01-15 08:45:00   CommuterX        Twitter     
+2  2023-01-15 15:45:00   FitnessFan      Instagram    
+3  2023-01-15 18:20:00   AdventureX       Facebook    
+4  2023-01-15 19:55:00   ChefCook        Instagram    
+
+                                     Hashtags  Retweets  Likes       Country  \
+0   #Nature #Park                                  15.0   30.0     USA         
+1   #Traffic #Morning                               5.0   10.0     Canada      
+2   #Fitness #Workout                              20.0   40.0   USA           
+3   #Travel #Adventure                              8.0   15.0     UK          
+4   #Cooking #Food                                 12.0   25.0    Australia    
+
+   Year  Month  Day  Hour  
+0  2023      1   15    12  
+1  2023      1   15     8  
+2  2023      1   15    15  
+3  2023      1   15    18  
+4  2023      1   15    19  
+Accuracy: 0.013605442176870748
+
+Confusion Matrix:
+ [[0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ [0 1 0 ... 0 0 0]
+ ...
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]]
+
+Classification Report:
