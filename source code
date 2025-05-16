@@ -1,0 +1,47 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import re
+import string
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+
+# 2. Load your CSV file
+df = pd.read_csv("sentimentdataset (1).csv")
+
+# 3. Preview the dataset
+print(df.head())
+
+# 4. Basic preprocessing (adjust based on your actual column names)
+def clean_text(text):
+    text = text.lower()
+    text = re.sub(r"http\S+|www\S+|https\S+", '', text)
+    text = re.sub(r'\@w+|\#','', text)
+    text = re.sub(r'[^\w\s]', '', text)
+    text = re.sub(r'\d+', '', text)
+    return text.strip()
+
+df['Sentiment'] = df['Text'].apply(clean_text)  # Replace 'text' with the actual text column name
+
+# 5. Split data
+X = df['Sentiment']
+y = df['Text']  # Replace with your label column name
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 6. Vectorize
+vectorizer = TfidfVectorizer(max_features=5000)
+X_train_vect = vectorizer.fit_transform(X_train)
+X_test_vect = vectorizer.transform(X_test)
+
+# 7. Train model
+model = LogisticRegression()
+model.fit(X_train_vect, y_train)
+
+# 8. Predict and evaluate
+y_pred = model.predict(X_test_vect)
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
